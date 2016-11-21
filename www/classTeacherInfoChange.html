@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <title>修改教师信息</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        #h{
+            height: 50px;
+            width:99%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #h11{
+            width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+        #h3{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11" >
+        <div style="float: left;">
+            <a href="classManage.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+        <a href="#">
+            <img src="images/t3.png" style="height: 45px;width: 45px;" >
+        </a>
+        <strong style="font-size: 25px;">修改班级信息>>教师</strong>
+    </div>
+</div>
+<div id="h3">
+    <div class="panel panel-info" id="a4">
+        <!-- Default panel contents -->
+        <div class="panel-heading">请选择您要对教师表的管理方式：
+            <!--<div class="btn-group">-->
+                <!--<button type="button" class="btn btn-warning">修改教师信息</button>-->
+                <!--<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">-->
+                    <!--<span class="caret"></span>-->
+                    <!--&lt;!&ndash;<span class="sr-only">Toggle Dropdown</span>&ndash;&gt;-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu">-->
+                    <!--<li><a href="#"></a></li>-->
+                    <!--<li><a href="#">对教师的管理二</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div id="anniu">
+                <button class="btn btn-danger" id="btn1">删除教师信息</button>
+                <button class="btn btn-warning" id="btn2">添加教师信息</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table id="table1" class="table table-bordered">
+                    <tr>
+                        <td>科目</td>
+                        <td>教师姓名</td>
+                        <td>联系电话</td>
+                        <td>QQ</td>
+                    </tr>
+                    <tr>
+                        <td>英语</td>
+                        <td>李四</td>
+                        <td>1300000000</td>
+                        <td>123456789</td>
+                    </tr>
+                    <tr>
+                        <td>英语</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>英语</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>英语</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>英语</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div>确定修改请点击提交按钮：</div>
+            <div>
+                <button type="button" class="btn btn-success">提交修改</button>
+                <button type="button" class="btn btn-danger">直接退出</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="classManagerVerify.js"></script>
+</html>

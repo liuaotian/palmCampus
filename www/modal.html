@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .modal-body{
+            font-family: 黑体;
+            color:blue;
+            font-size: 20px;
+            text-align: center;
+
+        }
+    </style>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/jquery-3.1.0.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.js" ></script>
+</head>
+<body>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">您还没有选择班级！</div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">确定</button>-->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog"-->
+     <!--aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close"-->
+                        <!--data-dismiss="modal" aria-hidden="true">-->
+                    <!--&times;-->
+                <!--</button>-->
+                <!--<h4 class="modal-title" id="myModalLabel">-->
+                    <!--请选择出库类型-->
+                <!--</h4>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--出库类型是：-->
+                <!--<select id="select" onchange="goUrl(this.options[this.selectedIndex])">-->
+                    <!--<option value="0">请选择</option>-->
+                    <!--<option value="comAdmin_in_purchase.html">借用</option>-->
+                    <!--<option value="comAdmin_in_return.html">领用</option>-->
+                    <!--<option value="comAdmin_in_gain.html">赠与</option>-->
+                <!--</select>-->
+
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+
+                <!--<div id="thediv" align="left">你选择的出库类型是：<p></p></div>-->
+                <!--<button type="button" class="btn btn-default"-->
+                        <!--data-dismiss="modal">关闭-->
+                <!--</button>-->
+                <!--<button type="button" class="btn btn-primary">-->
+                    <!--确定-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</div>-->
+
+
+<script>
+    //加载模态框
+    $('#myModal').modal();
+
+    $('#myModal').on('hidden.bs.modal', function () {
+        history.back();
+    });
+
+
+
+
+//    $(function() {
+//        $("body:not(#myModal)").click( function() {
+//            history.back();
+//        });
+//    });
+
+
+
+//    $(document).ready(function () {
+//        $("#select").bind("change",function(){
+//            if($(this).val()==0){
+//                return;
+//            }
+//            else{
+//                $("p").text($(this).val());
+//            }
+//        });
+//    });
+    //选择触发事件
+//    function goUrl(obj){
+//        location.href=obj.value;
+//    }
+</script>
+</body>
+</html>

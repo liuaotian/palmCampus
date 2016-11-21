@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息修改</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/common.js"></script>
+    <script src="personalInfo.js"></script>
+    <style>
+        #h{
+            height: 50px;
+            width:99%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #h11{
+            width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+        #h3{
+            /*border: 1px solid blue;*/
+            position: absolute;
+            top:62px;
+            margin: 0 auto;
+            width: 80%;
+            left: 10%
+        }
+        @media (max-width: 992px) {
+            #h3{
+                width: 99%;
+                left: 0.5%
+            }
+            #h11 strong{
+                font-size: 20px;
+            }
+        }
+        @media(min-width:992px){
+            #h11 strong{
+                font-size: 25px;
+            }
+        }
+        #biaoTi{
+            background-color: #9acfea;
+            font-size: 30px;
+            font-family: 幼圆;
+            text-align: center;
+        }
+        #h3 a{
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11" >
+        <div style="float: left;">
+            <a href="homePage.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+            <strong >资料编辑>>个人信息设置</strong>
+        </div>
+
+    </div>
+</div>
+<div id="h3">
+    <div>
+        <div id="biaoTi">请填写您的个人信息</div>
+        <div style="height: 20px"></div>
+            <div class="form-group">
+                <span style="font-weight: bold">头像：</span>
+                <img src=""style="width: 66px;height: 66px;" id="touxiang">
+                <div  class="btn btn-sm btn-info" id="shangchuan">上传头像</div>
+                <div style="width:200px;margin:12px;background:gray">
+                    <div id='wancheng' style="background:#69d2c7;width:0">0%</div>
+                </div>
+                <!--<span id='wenjian'></span>-->
+            </div>
+            <div class="form-group">
+                <label for="userName">昵称：</label>
+                <input type="text" class="form-control" id="userName" placeholder="请输入您的昵称">
+            </div>
+            <div class="form-group">
+                <label for="phone">手机：</label>
+                <input type="text" class="form-control" id="phone" placeholder="请输入您的手机号码">
+            </div>
+            <div class="form-group">
+                <label for="qq">QQ：</label>
+                <input type="text" class="form-control" id="qq" placeholder="请输入您的QQ号码">
+            </div>
+            <div>确定修改请点击提交按钮：</div>
+            <div>
+                <button type="button" class="btn btn-success" id="submit">提交修改</button>
+                <button type="button" class="btn btn-danger"><a href="homePage.html">直接退出</a></button>
+            </div>
+    </div>
+</div>
+
+</body>
+</html>

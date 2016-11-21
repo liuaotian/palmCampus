@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册图片</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="css/photoswipe.css">
+    <link rel="stylesheet" href="css/default-skin/default-skin.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <style type="text/css">
+        /*html{*/
+        /*margin:0px;*/
+        /*padding:0px;*/
+        /*background: green;*/
+        /*}*/
+        #head1{
+            height: 50px;
+            width:99%;
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            font-size: 25px;
+            z-index: 10;
+        }
+        .img{
+            width: 45px;
+            height: 45px;
+        }
+        #h11 strong{
+            text-align: center;
+        }
+        #anniu img{
+            height: 25px;
+            width: 25px;
+        }
+        #anniu a{
+            color: #fff;
+        }
+        #main{
+            height: 100%;
+            background-color: #f2f2f2;
+            position: absolute;
+            top:60px;
+        }
+        #i1{
+            float: left;
+            margin: 8px;
+
+        }
+        .i2 img{
+            width: 160px;height: 120px;
+        }
+        #main{
+            width: 99%;
+            left: 0.5%;
+        }
+        .picInfo{
+            color: #fff;
+            font-weight: bolder;
+            width: 160px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            opacity: 0.65;
+            margin-top: -50px;
+            display: none;
+        }
+        .picTime{
+            height: 30px;
+            width:160px;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+        }
+
+        #i1:hover .picInfo{
+            display: block;
+        }
+        #i1:hover .picTime{
+            border: 1px solid #f5b93c;
+            border-top: none;
+        }
+        @media(max-width:480px){
+            #i1{
+                float: left;
+                width: 100px;
+                height: 100px;
+                margin: 8px 3px;
+                font-size: 12px
+            }
+            .i2 img{
+                width: 100px;
+                height: 100px;
+
+            }
+            .picTime{
+                display: none;
+            }
+            #main{
+                left: 0;
+            }
+            #i1:hover .picInfo{
+                display: none;
+            }
+        }
+        @media(max-width:445px){
+            .my-gallery{
+                margin-left: 10%;
+            }
+        }
+        .shanchu{
+            text-align: center;
+            height: 8px;
+            display: none;
+        }
+        .shanchu a{
+            color: red;
+        }
+        #wancheng{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="head1">
+    <span>
+        <strong></strong>
+    </span>
+    <div style="float: left;">
+        <a href="classAlbum.html">
+            <img class="img" src="images/back.png">
+        </a>
+    </div>
+</div>
+<div id="main">
+
+    <div id="anniu">
+        <button class="btn btn-info" id="upload"><a href="classUploadPhoto.html"><img src="images/t4.png">上传照片</a></button>
+        <button class="btn btn-success" id="delImg" data-toggle="modal" data-target="#myModal"><img src="images/shantu.png">删除照片</button>
+        <button class="btn btn-danger" id="wancheng" data-toggle="modal" data-target="#myModal">完成修改</button>
+    </div>
+    <div style="height: 40px"></div>
+
+    <div class="my-gallery">
+
+    </div>
+    <div class="delPic">
+
+    </div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/photoswipe.min.js"></script>
+<script src="js/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="classPicture.js"></script>
+</body>
+<!--<script src="classVerify.js"></script>-->
+</html>

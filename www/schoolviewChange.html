@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/layer.js"></script>
+    <!--<script src="schoolManagerVerify.js"></script>-->
+    <title>修改学校名单</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        #head{
+            height: 50px;
+            width:99%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #head1{
+            width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+        #head2{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+
+
+        img{
+            width: 80%;
+            /*height: 30%;*/
+            margin-bottom: 20px;
+        }
+
+        #schoolView ul{
+            list-style-type: none;
+            margin-left: -35px;
+        }
+        @media(max-width:480px) {
+            #i1 {
+                float: left;
+                width: 100px;
+                height: 100px;
+                margin: 8px 3px;
+                font-size: 12px
+            }
+        }
+        .i2 img{
+            width: 160px;height: 120px;
+        }
+        .img{
+            width: 45px;
+            height: 45px;
+        }
+        #anniu img{
+            height: 25px;
+            width: 25px;
+        }
+        #anniu a{
+            color: #fff;
+        }
+        #main{
+            background-color: #f2f2f2;
+            position: absolute;
+            top:60px;
+        }
+        #i1{
+            float: left;
+            margin: 8px;
+
+        }
+        .i2 img{
+            width: 160px;height: 120px;
+        }
+        #main{
+            width: 99%;
+            left: 0.5%;
+        }
+
+        .picInfo{
+            height: 30px;
+            width:160px;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+        }
+
+        #i1:hover .picInfo{
+            display: block;
+        }
+        #i1:hover .picTime{
+            border: 1px solid #f5b93c;
+            border-top: none;
+        }
+        @media(max-width:480px){
+            #i1{
+                float: left;
+                width: 100px;
+                height: 100px;
+                margin: 3px;
+            }
+            .i2 img{
+                width: 100px;
+                height: 100px;
+            }
+            .picInfo{
+                display: none;
+            }
+            #main{
+                left: 0;
+            }
+            #i1:hover .picInfo{
+                display: none;
+            }
+        }
+        @media(min-width:992px){
+            #main{
+                height: 100%;
+            }
+        }
+        @media(max-width:445px){
+            .my-gallery{
+                margin-left: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="head">
+    <div id="head1" >
+        <div style="float: left;">
+            <a href="schoolChange.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+            <img src="images/t3.png" style="height: 45px;width: 45px;" >
+        <strong style="font-size: 25px;">修改学校信息>>校园风光</strong>
+    </div>
+</div>
+<div id="main">
+
+    <div style="height: 40px"></div>
+
+    <div class="photo">
+
+    </div>
+
+</div>
+<script src="schoolviewChange.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="schoolManagerVerify.js"></script>
+    <title>学校修改</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        .anniu{
+            font-size: 30px;
+            margin-top: 20px
+        }
+        #head{
+            height: 50px;
+            width:99%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #head1{
+            width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+        #head2{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+        a:hover {
+            color: #ff0000;
+            text-decoration: none;
+        }
+        #btn5{
+            font-size: 26px;
+            color: white;
+        }
+        @media (min-width: 992px) {
+            #tittle{
+                font-size: 25px;
+            }
+        }
+        @media (max-width: 992px) {
+            #tittle{
+                font-size: 20px;
+                float: left;
+                line-height: 30px;
+            }
+            #tit-img{
+                float: left;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="head">
+    <div id="head1" >
+        <div style="float: left;">
+            <a href="school.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+        <img src="images/t3.png" style="height: 45px;width: 45px;" id="tit-img">
+        <strong id="tittle">修改学校信息:</strong>
+    </div>
+</div>
+
+<div id="head2">
+    <div class="panel panel-info" id="a4">
+        <!-- Default panel contents -->
+        <div class="panel-heading">请选择您要修改的模块：</div>
+        <div class="panel-body">
+            <div id="fl" style="text-align: center">
+                <div>
+                    <a href="schoolbriefChange.html">
+                        <button type="button" class="btn btn-info anniu">学校简介修改</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="schoolUploadPhoto.html">
+                        <button type="button" class="btn btn-success anniu">校园风光修改</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="schoolflashChange.html">
+                        <button type="button" class="btn btn-warning anniu">学校快讯修改</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="schoolnoticeChange.html">
+                        <button type="button" class="btn btn-danger anniu">学校通知修改</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="schoolCollegeChange.html">
+                        <button type="button" class="btn anniu" style="background-color:#7132B9;color:white">学校学院修改</button>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="collegeManager.html">
+                        <button type="button" class="btn btn-info  anniu" id="btn5">学院管理员设置</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

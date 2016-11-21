@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级相册</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/common.js"></script>
+    <style type="text/css">
+        #head1{
+            height: 50px;
+            width:99%;
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            font-size: 25px;
+            z-index: 10;
+        }
+        .img{
+            width: 45px;
+            height: 45px;
+        }
+        #h11 strong{
+            text-align: center;
+        }
+        .p{
+            width: 160px;
+            height: 180px;
+            background-color: #fff;
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            /*border: 1px solid green;*/
+            /*margin: 0 auto;*/
+        }
+        .p1{
+            width: 140px;
+            height: 120px;
+            margin: 10px ;
+            background-color: #fff
+        }
+        .p1 img{
+            width: 140px;height: 120px;
+
+        }
+        .p2{
+            width: 160px;
+            height: 20px;
+            text-align: center;
+            font-family: 黑体;
+            font-size: 20px
+        }
+        #anniu img{
+            height: 25px;
+            width: 25px;
+        }
+        #anniu a{
+            color: #fff;
+        }
+        #bbb{
+            background-color: #f2f2f2;
+            position: absolute;
+            top:60px;
+            text-align: center;
+            width: 99%;
+            left: 0.5%
+        }
+        @media (max-width:480px) {
+            .p{
+                margin-right: 50px;
+                margin-bottom: 30px;
+
+            }
+            #bbb{
+                width: 100%;
+                left: 0;
+            }
+        }
+        @media (max-width:459px) {
+            #photo1{
+                margin-left: 0;
+            }
+            .p{
+                margin-right: 10px;
+                margin-bottom: 30px;
+
+            }
+        }
+        @media (min-width:680px) {
+            #bbb{
+                height: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="head1">
+    <span>
+        <strong>班级相册</strong>
+    </span>
+    <div style="float: left;">
+        <a href="classIndex.html">
+            <img class="img" src="images/back.png">
+        </a>
+    </div>
+</div>
+<div id="bbb" style="">
+    <div id="anniu">
+        <button class="btn btn-info" id="upload"><a href="classUploadPhoto.html"><img src="images/t4.png">上传照片</a></button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#myModal"><img src="images/t5.png">创建相册</button>
+        <div  class="dropdown" style="float: left">
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                删除相册
+                <span class="caret"></span>
+            </button>
+            <ul id="i" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="background-color: #b9def0"></ul>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="myModalLabel">创建相册</h3>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label for="albumName">相册名称：</label>
+                                <input type="text" class="form-control" id="albumName" placeholder="请输入您的相册名称">
+                            </div>
+                            <div class="form-group">
+                                <label for="albumDescribe">相册描述：</label>
+                                <textarea  rows="3" class="form-control"maxlength="40"  id="albumDescribe" placeholder="请描述您的相册(选填)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="albumCover">相册封面：</label>
+                                <img  class="form-control" src="" id="albumCover" style="width: 140px;height: 120px;margin: 0 auto">
+                                选择一张图片设为相册封面
+                                <div  class="btn btn-sm btn-info" id="shangchuan">上传相册封面</div>
+                                <div style="width:200px;margin:20px;background:gray;margin: 0 auto">
+                                    <div id='wancheng' style="background:#69d2c7;width:0">0%</div>
+                                </div>
+                                <div><span id='wenjian'style="display:none;"></span></div>
+
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="que"><a>确定</a></button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="height: 40px"></div>
+    <div id="photo1" style="overflow: hidden;text-align: center;padding-left: 5%">
+        <div id="photo" style="">
+        </div>
+    </div>
+</div>
+<script src="classVerify.js"></script>
+<script src="classAlbum.js"></script>
+</body>
+</html>

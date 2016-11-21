@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="collegeManagerVerify.js"></script>
+
+    <title>学院管理员设置</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        #h{
+            height: 50px;
+            width:100%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #h11{
+            width: 500px;
+            color: #fff;
+            text-align: center;
+        }
+        #h3{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+        input{
+            width:80%;
+
+        }
+        li{height:30px;}
+        button{
+            float:right
+        }
+        div{
+            overflow: hidden;
+        }
+        @media (min-width: 992px) {
+            #tittle{
+                font-size: 25px;
+            }
+        }
+        @media (max-width: 992px) {
+            #tittle{
+                font-size: 18px;
+                float: left;
+                line-height: 30px;
+            }
+            #tit-img{
+                float: left;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11" >
+        <div style="float: left;">
+            <a href="schoolChange.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+        <img src="images/t3.png" style="height: 45px;width: 45px;" id="tit-img">
+        <strong id="tittle">修改学校信息>>学院管理员设置</strong>
+    </div>
+</div>
+<div id="h3">
+    <div class="panel panel-info" id="a4">
+        <!-- Default panel contents -->
+        <div class="panel-heading">添加删除管理员：</div>
+        <div class="panel-body">
+            <div class="input-group">
+                <input type="text" id="addManager" class="form-control input-lg" size="100" maxlength="11" onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (!/^[\d]+$/ig.test(this.value)){this.value='';}}" placeholder="输入添加的管理员账号(11位手机号码)" aria-describedby="basic-addon1" onblur="checkAdd()">
+            </div>
+            <div style="height:20px" id="addManager_prompt"></div>
+            <div class="input-group">
+                <input type="text" id="college" class="form-control input-lg" size="100" maxlength="11"  placeholder="输入此管理员的学院" aria-describedby="basic-addon1">
+            </div>
+            <div style="height:20px" id="college_prompt"></div>
+            <div>
+                <button type="button" class="btn btn-success" id="add">添加</button>
+            </div>
+            <div style="height: 15px"></div>
+            <div class="input-group">
+                <input type="text" id="delManager" class="form-control input-lg" size="100"  maxlength="11" onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (!/^[\d]+$/ig.test(this.value)){this.value='';}}" placeholder="输入删除的管理员账号(11位手机号码)" aria-describedby="basic-addon1" onblur="checkDel()">
+            </div>
+            <div style="height:20px" id="delManager_prompt"></div>
+            <div>
+                <button type="button" class="btn btn-danger" id="del">删除</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="collegeManager.js"></script>
+</body>
+</html>

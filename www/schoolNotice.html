@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="schoolNotice.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="schoolVerification.js"></script>
+    <title>通知</title>
+    <style>
+        #noticeSchool{
+            height: 50px;
+            width:100%;
+            font-size: 28px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            background-color: #69d2c7;
+            color: #fff;
+            z-index: 2
+        }
+        #container{
+            /*border: 1px #000000 solid;*/
+            margin-top:40px;
+            padding-top: 40px;
+        }
+        #img1{
+            width: 40px;
+            height: 40px;
+            float: left;
+        }
+
+        #noticeContainer{
+            width:100%;
+            text-align: center;
+            background-color: #f7f7f7;
+            border-radius: 15px;
+            padding: 30px;
+
+        }
+        #noticeBody{
+
+            text-align: left;
+            border: 1px solid #bce8f1;
+            border-radius: 15px;
+            padding-right: 20px;
+
+        }
+        @media screen and (min-width: 992px){
+            #noticeContainer{width:70%;margin: 0 auto}
+
+        }
+        a:hover {
+            color: #ff0000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="noticeSchool"><a href="school.html"><img src="images/back.png" id="img1"></a>学校通知</div>
+<div id="container">
+ <div id="noticeContainer">
+    <ol id="noticeBody">
+    </ol>
+  </div>
+</div>
+</body>
+</html>

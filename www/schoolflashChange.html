@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="schoolManagerVerify.js"></script>
+    <title>修改学校信息</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        #h{
+            height: 50px;
+            width:100%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #h11{
+            width: 500px;
+            color: #fff;
+            text-align: center;
+        }
+        #h3{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+        input{
+            width:80%;
+
+        }
+        li{height:30px;}
+        @media (min-width: 992px) {
+            #tittle{
+                font-size: 25px;
+            }
+        }
+        @media (max-width: 992px) {
+            #tittle{
+                font-size: 20px;
+                float: left;
+                line-height: 30px;
+            }
+            #tit-img{
+                float: left;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11" >
+        <div style="float: left;">
+            <a href="schoolChange.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+            <img src="images/t3.png" style="height: 45px;width: 45px;" id="tit-img">
+        <strong id="tittle">修改学校信息>>快讯</strong>
+    </div>
+</div>
+<div id="h3">
+    <div class="panel panel-info" id="a4">
+        <!-- Default panel contents -->
+        <div class="panel-heading">请选择您要对快讯的修改方式：
+            <!--<div class="btn-group">-->
+                <!--<button type="button" class="btn btn-warning" id="btnCnt">删除学校快讯</button>-->
+                <!--<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">-->
+                    <!--<span class="caret"></span>-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu">-->
+                    <!--<li><a href="#"  id="btn1">删除学校快讯</a></li>-->
+                    <!--<li><a href="#"  id="btn2">添加学校快讯</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div id="anniu">
+                <button class="btn btn-danger" id="btn1">删除学校快讯</button>
+                <button class="btn btn-warning" id="btn2">添加学校快讯</button>
+            </div>
+        </div>
+    </div>
+    <div class="flashes">
+        <ol>
+
+        </ol>
+    </div>
+    <div class="panel-body" style="display: none">
+        <div class="input-group">
+            <input type="text"  class="form-control input-lg" rows="2" cols="50" maxlength="100"  size="100" placeholder="输入快讯标题" id="flashTittle"  onblur="checkTitle()">
+        </div>
+        <div style="height: 30px" id="flashTitle_prompt"></div>
+        <div class="input-group">
+            <textarea  class="form-control" rows="10" cols="100" maxlength="2000" placeholder="输入快讯内容" id="flashContent" onblur="checkIntro()"></textarea>
+        </div>
+        <div style="height: 30px" id="flashContent_prompt" ></div>
+        <div>确定修改请点击提交按钮：</div>
+        <div>
+            <button type="button" class="btn btn-success" id="submit">提交修改</button>
+        </div>
+    </div>
+</div>
+</div>
+<script src = "schoolflashChange.js"></script>
+</body>
+</html>
+

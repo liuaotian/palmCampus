@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传相片</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/common.js"></script>
+    <script src="schoolUploadPhoto.js"></script>
+    <style type="text/css">
+        #h{
+            height: 50px;
+            width:100%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+            line-height: 50px;
+        }
+        #h11{
+            width: 500px;
+            color: #fff;
+            text-align: center;
+        }
+        #h11 strong{
+            font-size: 25px;
+        }
+        #btn1 img{
+            width: 30px;
+            height: 30px;
+        }
+        button{
+            font-size: 50px
+        }
+        @media screen and (max-width: 992px) {
+            #h11 strong{
+                font-size: 18px;
+            }
+        }
+
+        #btn1{
+            text-align: center;
+            margin: 0 auto;
+            width: 230px;
+            font-size: 40px;
+            color: #fff;
+            font-family: 黑体;
+            background-color: #62b6e5;
+            border-radius: 5px;
+        }
+        #a1{
+            width: 90%;
+            height:500px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+        /*#a2{*/
+            /*height: 60px;*/
+            /*border: 1px solid #e6e6e6;*/
+            /*background-color: #f3f3f3;*/
+            /*border-radius: 10px;*/
+
+        /*}*/
+        #a2 span{
+            text-align: center;
+            font-size: 16px;
+            line-height: 60px;
+            margin-left: 1em;
+
+        }
+        #a3{
+            height: 400px;
+            border: 1px solid #c9ddea
+        }
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11">
+        <div style="float: left;">
+            <a href="schoolChange.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+            <a href="#">
+                <img src="images/t3.png" style="height: 45px;width: 45px;" >
+            </a>
+            <strong style="">校园风光>>上传照片</strong>
+        </div>
+
+    </div>
+</div>
+    <div id="a1" style="">
+        <a href="schoolviewChange.html"><button class="btn btn-info">删除照片</button></a>
+
+        <div id="a3" style="">
+            <div id="btn1" style="margin: 0 auto;margin-top: 105px"><img src="images/t5.png">选择照片</div>
+            <div style="width:200px;margin:20px;background:gray;margin: 0 auto">
+                <div id='wancheng' style="background:#69d2c7;width:0;margin-top: 10px">0%</div>
+            </div>
+            <div><span id='wenjian' style="display: none"></span></div>
+            <div style="text-align: center">
+                <input type="text" id="photoDes" style="margin-top: 20px ;width: 220px" maxlength="8" placeholder="请输入图片介绍（8字以内）">
+                <br/>
+                <button class="btn-info" id="upload" style="font-size: 20px;margin-top: 10px">确定上传</button>
+            </div>
+            <div style="height: 10px"></div>
+            <!--<div style="text-align: center;font-size: 20px;color: #aaaaaa">按住ctrl键可选择多张</div>-->
+        </div>
+    </div>
+</body>
+<script src="schoolManagerVerify.js"></script>
+</html>

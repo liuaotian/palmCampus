@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <title>通知修改</title>
+    <style>
+        body{
+            font-family: 黑体;
+        }
+        #h{
+            height: 50px;
+            width:100%;
+            position: fixed;
+            top: 0;left: 0.5%;
+            background-color: #69d2c7;
+            z-index: 5;
+        }
+        #h11{
+            width: 500px;
+            color: #fff;
+            text-align: center;
+        }
+        #h3{
+            width: 80%;
+            margin: 0 auto;
+            position: absolute;
+            top: 70px;
+            left: 10%;
+        }
+        input{
+            width:80%;
+
+        }
+        li{height:30px;}
+        .news{
+            margin-top: 10px;
+            margin-left:10px ;
+            margin-right:10px ;
+            letter-spacing: 2px;
+            text-indent: 2em;
+        }
+        @media (min-width: 992px) {
+            #tittle{
+                font-size: 25px;
+            }
+        }
+        @media (max-width: 992px) {
+            #tittle{
+                font-size: 20px;
+                float: left;
+                line-height: 30px;
+            }
+            #tit-img{
+                float: left;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="h">
+    <div id="h11" >
+        <div style="float: left;">
+            <a href="classManage.html">
+                <img src="images/back.png" style="height: 45px;width: 45px;" >
+            </a>
+        </div>
+        <img id="tit-img" src="images/t3.png" style="height: 45px;width: 45px;" >
+        <strong id="tittle">修改班级信息>>班级通知修改</strong>
+    </div>
+</div>
+<div id="h3">
+    <div class="panel panel-info" id="a4">
+        <!-- Default panel contents -->
+        <div class="panel-heading">请选择您要对通知的修改方式：
+            <!--<div class="btn-group">-->
+                <!--<button type="button" class="btn btn-warning" id="btnCnt">删除通知</button>-->
+                <!--<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">-->
+                    <!--<span class="caret"></span>-->
+                    <!--&lt;!&ndash;<span class="sr-only">Toggle Dropdown</span>&ndash;&gt;-->
+                <!--</button>-->
+                <!--<ul class="dropdown-menu" role="menu">-->
+                    <!--<li><a href="#"  id="btn1">删除通知</a></li>-->
+                    <!--<li><a href="#"  id="btn2">添加通知</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <div id="anniu">
+                <button class="btn btn-danger" id="btn1">删除通知</button>
+                <button class="btn btn-warning" id="btn2">添加通知</button>
+            </div>
+        </div>
+
+        <div class="news">
+            <ol>
+            </ol>
+        </div>
+        <div class="panel-body" style="display: none">
+            <div class="form">
+                <form action="#" method="post">
+                <div class="input-group">
+                <input type="text" id="noticeTitle" class="form-control input-lg" size="100" placeholder="输入通知标题" aria-describedby="basic-addon1" onblur="checkTitle()">
+            </div>
+            <div style="height: 30px" id="noticeTitle_prompt"></div>
+            <div class="input-group">
+                <textarea id="noticeContent" class="form-control input-lg" rows= "10" cols="100" placeholder="输入通知内容" aria-describedby="basic-addon1" onblur="checkContent()"></textarea>
+            </div>
+            <div style="height: 30px" id="noticeContent_prompt"></div>
+            </form>
+            </div>
+
+            <div>确定修改请点击提交按钮：</div>
+            <div>
+                <button type="button" class="btn btn-success" id="submit">提交修改</button>
+                <button type="button" class="btn btn-danger">直接退出</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="classManagerVerify.js"></script>
+<script src = "classNoticeChange.js" language="JavaScript"></script>
+</html>

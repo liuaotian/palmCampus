@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级通知</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js" ></script>
+    <script src="classNotice.js"></script>
+    <link rel="stylesheet" href="css/layer.css">
+    <script src="js/layer.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js" ></script>
+    <style>
+        #classNotice{
+            height: 50px;
+            width:100%;
+            font-size: 28px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            background-color: #69d2c7;
+            z-index: 2;
+            font-family: 黑体;
+            color: white;
+            font-weight: 600;
+        }
+        #container{
+            /*border: 1px #000000 solid;*/
+            margin-top:40px;
+            padding-top: 40px;
+        }
+        #img1{
+            width: 40px;
+            height: 40px;
+            float: left;
+        }
+
+        #noticeContainer{
+            width:100%;
+            text-align: center;
+            background-color: #f7f7f7;
+            border-radius: 15px;
+            padding: 30px;
+
+        }
+        #noticeBody{
+
+            text-align: left;
+            border: 1px solid #bce8f1;
+            border-radius: 15px;
+            padding-right: 20px;
+
+        }
+        @media screen and (min-width: 992px){
+            #noticeContainer{width:70%;margin: 0 auto}
+
+        }
+        a:hover{
+            text-decoration: none;
+            /*color: #ff0000;*/
+        }
+    </style>
+
+</head>
+<body>
+<div id="classNotice"><a href="classIndex.html"><img src="images/back.png" id="img1"></a>班级通知</div>
+<div id="container">
+    <div id="noticeContainer">
+    <div id="tongZhi">
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading" data-toggle="collapse"-->
+                 <!--data-parent="#accordion2" href="#collapseOne">-->
+                <!--<a class="accordion-toggle">通知1：</a>-->
+            <!--</div>-->
+            <!--<div id="collapseOne" class="panel-collapse collapse" style="height: 0;">-->
+                <!--<div class="panel-body">-->
+                    <!--&lt;!&ndash;<ol id="t1"></ol>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    </div>
+</div>
+
+</div>
+</body>
+<script src="classVerify.js"></script>
+</html>
