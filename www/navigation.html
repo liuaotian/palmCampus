@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title></title>
+      <script src="http://api.map.baidu.com/api?v=2.0&ak=NWHTRFHRGuLWh4mcHoFjLqr4QZYwjEZ3"></script>
+      <link rel="stylesheet" type="text/css" href="css/aui.2.0.css" />
+  </head>
+  <style>
+  body{
+    font-family:STXihei;
+  }
+  #map{
+  width:100%;
+  }
+  </style>
+  <body>
+    <div id="schoolMap">
+       <header class="aui-bar aui-bar-nav">
+          <a class="aui-pull-left aui-btn">
+         <span class="aui-iconfont aui-icon-left" @click='btnBack'></span>
+          </a>
+        <div class="aui-title">{{title}}</div>
+        </header>
+    <div class="aui-content aui-margin-b-15" style="width:80%;float:left">
+    <ul class="aui-list aui-form-list">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-input" @click="showQlist">
+                    <input type="text" placeholder="选择起点" disabled="disabled" id="InQD">
+                    <input type="hidden" id="start_point" value=""/>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-input" @click="showZlist">
+                    <input type="text" placeholder="选择终点" disabled="disabled" id="InZD">
+                    <input type="hidden" id="end_point" value=""/>
+                </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div class="aui-btn aui-btn-info" style="float:left;margin-top:28px;margin-left:10px;" id="tijiao">提交</div>
+    <div id="qidian" style="clear:both;overflow:auto" v-show="showQ">
+      <ul class="aui-list aui-list-in">
+        <li class="aui-list-header">
+            请选择起点
+        </li>
+        <li class="aui-list-item" v-for="(item,index) in QDlists">
+            <div class="aui-list-item-inner" @click="clickQD(index)">
+                <div class="aui-list-item-title">{{item.name}}</div>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div id="zhongdian" style="clear:both;overflow:auto" v-show="showZ">
+      <ul class="aui-list aui-list-in">
+        <li class="aui-list-header">
+            请选择终点
+        </li>
+        <li class="aui-list-item" v-for="(item,index) in ZDlists">
+            <div class="aui-list-item-inner" @click="clickZD(index)">
+                <div class="aui-list-item-title">{{item.name}}</div>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div id="map" v-show="showM"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#schoolMap',
+      data () {
+        return {
+           title:"校内导航",
+           map:"",
+           showQ:0,
+           showZ:0,
+           showM:0,
+           shu:0,
+           QDx:0,
+           QDy:0,
+           ZDx:0,
+           ZDy:0,
+           myX:0,
+           myY:0,
+           QDlists:
+           [
+             {name: '我的位置',navX:'',navY:''},
+             {name: '文通楼',navX:'119.227225',navY:'34.612614'},
+             {name: '主楼',navX:'119.227526',navY:'34.61072'},
+             {name: '图书馆',navX:'119.226453',navY:'34.610203'},
+             {name: '讲堂楼',navX:'119.228097',navY:'34.6104'}
+           ],
+           ZDlists:
+           [
+             {name: '文通楼',navX:'119.227225',navY:'34.612614'},
+             {name: '主楼',navX:'119.227526',navY:'34.61072'},
+             {name: '图书馆',navX:'119.226453',navY:'34.610203'},
+             {name: '讲堂楼',navX:'119.228097',navY:'34.6104'}
+           ],
+        }
+      },
+      methods: {
+         btnBack:function () {
+           location.replace('school.html')
+         },
+         showQlist(){
+           this.showQ=1;
+           this.showZ=0;
+         },
+         showZlist(){
+           this.showQ=0;
+           this.showZ=1;
+         },
+         clickQD(shu){
+           document.getElementById("InQD").value=this.QDlists[shu].name;
+           document.getElementById("start_point").value=this.QDlists[shu].navX+','+this.QDlists[shu].navY;
+         },
+         clickZD(shu){
+           document.getElementById("InZD").value=this.ZDlists[shu].name;
+           document.getElementById("end_point").value=this.ZDlists[shu].navX+','+this.ZDlists[shu].navY;
+         },
+
+        "ditu":function(){
+          console.log("map loading");
+
+          var map = new BMap.Map('map');
+          map.centerAndZoom(new BMap.Point(119.225928, 34.620447), 16);  // 初始化地图,设置中心点坐标和地图级别
+          var walking = new BMap.WalkingRoute(map, {renderOptions: {map: map, autoViewport: true}});
+
+          var geolocation = new BMap.Geolocation();
+          geolocation.getCurrentPosition(function(r){
+              if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                  document.getElementById("tijiao").onclick=function(){
+                    if(document.getElementById("InQD").value=="")
+                    {
+                      alert("起点不能为空！")
+                    }
+                    else if(document.getElementById("InZD").value==""){
+                      alert("终点不能为空！")
+                    }
+                    else{
+                    //  alert("ok1");
+                      document.getElementById("qidian").style.display="none";
+                      document.getElementById("zhongdian").style.display="none";
+                      document.getElementById("map").style.display="block";
+                      var myQ=document.getElementById("start_point").value;
+                      var myQD = myQ.split(",");
+                    //  console.log("之后起点"+myQ);
+                      var myZ=document.getElementById("end_point").value;
+                      var myZD = myZ.split(",");
+                      //console.log("之后终点"+myZ);
+                      if(document.getElementById("InQD").value=="我的位置"){
+                            s_ = new BMap.Point(r.point.lng,r.point.lat);
+                            e_ = new BMap.Point(myZD[0],myZD[1]);
+                            walking.search(s_, e_);
+                          }
+                      else{
+                           console.log(myQD[0]);
+                           walking.search(new BMap.Point(myQD[0],myQD[1]),new BMap.Point(myZD[0],myZD[1]));
+                          }
+
+                    }
+                  };
+                  //search();
+
+              }else {
+                  alert('无法定位到您的当前位置，导航失败，请手动输入您的当前位置！'+this.getStatus());
+              }
+          },{enableHighAccuracy: true});
+
+       },
+     },
+      mounted(){
+          this.ditu();
+          document.getElementById("qidian").style.height=""+window.screen.height-150+"px";
+          document.getElementById("zhongdian").style.height=""+window.screen.height-150+"px";
+          document.getElementById("map").style.height=""+window.screen.height-150+"px";
+      }
+    })
+
+  </script>
+
+  </html>

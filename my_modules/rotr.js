@@ -1,3 +1,11 @@
+
+//全局错误代码
+var __errCode = global.__errCode = {
+    APIERR: 8788, //API接口异常，未知错误
+    NOTFOUND: 4312, //找不到目标
+};
+
+
 /*http路由分发
 接口模式server/:app/:api
 */
@@ -58,18 +66,282 @@ function * apihandler(next) {
 
     yield next;
 }
-/*<<<<<<<<<<<共用接口>>>>>>>>>>>>>*/
-//查询用户id
-_rotr.apis.excel = function() {
+
+
+/*<<<<<<<<<<<登陆界面（登陆验证）>>>>>>>>>>>>>*/
+//验证有无cookies
+_rotr.apis.validateCookie = function() {
+  var ctx = this;
+  var co = $co(function* () {
+      var res =yield _fns.getCookies(ctx);
+      //console.log(res);
+      ctx.body = res;
+      return ctx;
+  });
+  return co;
+};
+
+_rotr.apis.login = function() {
     var ctx = this;
     var co = $co(function* () {
-        var res =yield _excel();
+        var userAccount = ctx.query.userAccount || ctx.request.body.userAccount;
+        var userPassword = ctx.query.userPassword || ctx.request.body.userPassword;
+
+        var sqlstr="select count(*) from userInfo where userAccount='"+userAccount+"' and userPassword='"+userPassword+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows[0]['count(*)'];
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+
+
+_rotr.apis.pcLogin = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var adminAccount = ctx.query.adminAccount || ctx.request.body.adminAccount;
+        var adminPassword = ctx.query.adminPassword || ctx.request.body.adminPassword;
+
+        var sqlstr="select count(*) from admin where adminAccount='"+adminAccount+"' and adminPassword='"+adminPassword+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows[0]['count(*)'];
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+
+
+/*<<<<<<<<<<<个人信息界面（个人信息）>>>>>>>>>>>>>*/
+_rotr.apis.userInfo = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var userAccount =yield _fns.getCookies(ctx);
+        var sqlstr="select * from userInfo where userAccount='"+userAccount+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows;
         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<电费余额查询>>>>>>>>>>>>>*/
+_rotr.apis.powerRate = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+
+        var sqlstr="select powerRate from consumption where studentId='"+studentID+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows[0];
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<水费余额查询>>>>>>>>>>>>>*/
+_rotr.apis.waterRate = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+
+        var sqlstr="select waterRate from consumption where studentId='"+studentID+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows[0];
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<x校园卡余额查询>>>>>>>>>>>>>*/
+_rotr.apis.campusRate = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+
+        var sqlstr="select campusCard from consumption where studentId='"+studentID+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows[0];
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<x考试信息查询>>>>>>>>>>>>>*/
+_rotr.apis.testInfo = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+
+        var sqlstr="select * from testInfo where studentId='"+studentID+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows;
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<x考试成绩查询>>>>>>>>>>>>>*/
+_rotr.apis.scoreInfo = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+
+        var sqlstr="select * from scoreInfo where studentId='"+studentID+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows;
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<x空教室查询>>>>>>>>>>>>>*/
+_rotr.apis.emptyClassroom = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID = ctx.query.studentID || ctx.request.body.studentID;
+        var myDate = new Date();
+        var zhouji=myDate.getDay();
+        //console.log(zhouji);
+        var sqlstr="select * from EClassroom where ECWeek='"+zhouji+"'";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows;
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<x出售二手物品>>>>>>>>>>>>>*/
+_rotr.apis.saleThings = function() {
+    var ctx = this;
+    var co = $co(function* () {
+       var studentID =yield _fns.getCookies(ctx);
+        var thingsName = ctx.query.thingsName || ctx.request.body.thingsName;
+        var classify = ctx.query.classify || ctx.request.body.classify;
+        var description = ctx.query.description || ctx.request.body.description;
+        var phone = ctx.query.phone || ctx.request.body.phone;
+        var qq = ctx.query.qq || ctx.request.body.qq;
+        var sqlstr2="select userName from userInfo where userAccount='"+studentID+"'";
+         var rows2=yield _ctnu([_mysql.conn,'query'],sqlstr2);
+         var studentName=rows2[0].userName;
+         //console.log(studentName);
+         var myDate = new Date();
+         var riqi=myDate.toLocaleDateString();
+        //   console.log(riqi);
+        var sqlstr="insert into SHGoods set thingsName='"+ thingsName+"',classify='"+ classify +"',description='"+ description +"',phone='"+ phone +"',qq='"+ qq +"',studentId='"+ studentID +"',studentName='"+ studentName +"',saleTime='"+ riqi +"'";
+        //console.log(sqlstr);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        if(!rows)throw Error("失败");
+        else{
+          var res=1;
+        }
+      //  返回结果
         ctx.body = res;
         return ctx;
     });
     return co;
 };
+/*<<<<<<<<<<<我出售的二手物品>>>>>>>>>>>>>*/
+_rotr.apis.mySale = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var studentID =yield _fns.getCookies(ctx);
+        var sqlstr="select * from SHGoods where studentId='"+studentID+"'";
+        //console.log(sqlstr);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        var res=rows;
+      //  返回结果
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<二手物品下架>>>>>>>>>>>>>*/
+_rotr.apis.xiajia = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var thingsID = ctx.query.thingsID || ctx.request.body.thingsID;
+        var sqlstr="delete from SHGoods where SHGoodsId='"+thingsID+"'";
+      //  console.log(thingsID);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        if(!rows)throw Error("失败");
+        else{
+          var res=1;
+        }
+      //  返回结果
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<二手自行车>>>>>>>>>>>>>*/
+_rotr.apis.bike = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var sqlstr="select * from SHGoods where classify='自行车'";
+      //  console.log(thingsID);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        var res=rows;
+      //  返回结果
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<二手电器>>>>>>>>>>>>>*/
+_rotr.apis.dianqi = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var sqlstr="select * from SHGoods where classify='电器'";
+      //  console.log(thingsID);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        var res=rows;
+      //  返回结果
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<其它>>>>>>>>>>>>>*/
+_rotr.apis.qita = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var sqlstr="select * from SHGoods where classify='其它'";
+      //  console.log(thingsID);
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        var res=rows;
+      //  返回结果
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+
+/*<<<<<<<<<<<PC二手物品管理列表>>>>>>>>>>>>>*/
+_rotr.apis.pcSHG = function() {
+    var ctx = this;
+    var co = $co(function* () {
+         var sqlstr="select * from SHGoods";
+         var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+         var res= rows;
+         //console.log(res);
+         ctx.body = res;
+         return ctx;
+    });
+    return co;
+};
+/*<<<<<<<<<<<共用接口>>>>>>>>>>>>>*/
+
 //查询用户id
 _rotr.apis.getUserId = function() {
     var ctx = this;
@@ -270,6 +542,38 @@ _rotr.apis.headPortraitShow = function() {
         return ctx;
     });
     return co;
+};
+
+//test11111111111111111
+_rotr.apis.test111 = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        //var user =yield _fns.getIdByCtx(ctx);
+
+        var sqlstr="select * from userInfo";
+        var rows=yield _ctnu([_mysql.conn,'query'],sqlstr);
+        var res=rows;
+
+        ctx.body =res ;
+        return ctx;
+    });
+    return co;
+};
+//test22222222222222222222222
+_rotr.apis.test222 = function() {
+    var ctx = this;
+    var co = $co(function* () {
+        var res =yield _fns.getTest(ctx);
+        console.log(res);
+        ctx.body = res;
+        return ctx;
+    });
+    return co;
+};
+//test3333333333333333333333333
+_rotr.apis.test333 = function() {
+   var subNameObj = { subName1: "aaa", subName2: "bbb", subName3: "ccc" };
+   $.cookie("multiKey222", "", subNameObj, { expires: 1, path: "/", secure: false });
 };
 /*>>>>>>班级模块<<<<<<*/
 

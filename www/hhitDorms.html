@@ -31,7 +31,7 @@
   }
   </style>
   <body>
-    <div id="schoolView">
+    <div id="hhitDorm">
        <header class="aui-bar aui-bar-nav">
           <a class="aui-pull-left aui-btn">
          <span class="aui-iconfont aui-icon-left" @click='btnBack'></span>
@@ -43,11 +43,10 @@
            <img :src="item.src" style="width:100%;height:80px;">
          </div>
        </div>
-       <div  id="showSchool" v-show="showPic" @click='closeImg'>
+       <div  id="showSchool" v-show="showPic"  @click='closeImg'>
        <div id="schoolImg">
          <div><i class="aui-iconfont aui-icon-close" style="float:right;font-size:20px;margin-right:10px;" @click='closeImg'></i></div>
          <img src="" style="width:100%;" id="bigPic">
-         <div id="miaoshu" style="text-align:center">123123</div>
        </div>
        </div>
     </div>
@@ -56,26 +55,17 @@
 
   <script type="text/javascript">
     new Vue({
-      el: '#schoolView',
+      el: '#hhitDorm',
       data () {
         return {
-           title:"校园风光",
+           title:"宿舍内部",
            pictures:[
-             {src:"images/1.jpg",miaoshu:"主楼"},
-             {src:"images/2.jpg",miaoshu:"海洋楼"},
-             {src:"images/3.jpg",miaoshu:"图书馆"},
-             {src:"images/4.jpg",miaoshu:"欣园"},
-             {src:"images/5.jpg",miaoshu:"四食堂"},
-             {src:"images/6.jpg",miaoshu:"图书馆"},
-             {src:"images/7.jpg",miaoshu:"体育馆"},
-             {src:"images/8.jpg",miaoshu:"河"},
-             {src:"images/9.jpg",miaoshu:"欣园"},
-             {src:"images/10.jpg",miaoshu:"楼"},
-             {src:"images/11.jpg",miaoshu:"主楼"},
-             {src:"images/12.jpg",miaoshu:"主楼"},
-             {src:"images/13.jpg",miaoshu:"体育馆"},
-             {src:"images/14.jpg",miaoshu:"湖"},
-             {src:"images/15.jpg",miaoshu:"文通楼"},
+             {src:"images/dorm1.jpg"},
+             {src:"images/dorm2.jpg"},
+             {src:"images/dorm3.jpg"},
+             {src:"images/dorm4.jpg"},
+             {src:"images/dorm5.jpg"},
+             {src:"images/dorm6.jpg"},
            ],
            showPic:0,
            shu:0
@@ -88,7 +78,6 @@
          showImg(shu){
            console.log(this.pictures[shu].src);
            document.getElementById("bigPic").src=this.pictures[shu].src;
-           document.getElementById("miaoshu").innerHTML = this.pictures[shu].miaoshu;
            this.showPic=1;
 
          },

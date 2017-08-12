@@ -19,9 +19,9 @@ if (!_pie) var _pie = {};
 
 
     _cfg.qn = {
-        getUploadTokenApi: 'http://m.xmgc360.com/pie/api/getUploadToken', //上传到指定目录
-        getUploadTokenApi2: 'http://m.xmgc360.com/pie/api/getUploadToken2', //上传到随机文件名
-        BucketDomain: 'http://files.m.xmgc360.com/'
+        getUploadTokenApi: 'http://oo6wvjm5p.bkt.clouddn.com', //上传到指定目录
+        getUploadTokenApi2: 'http://oo6wvjm5p.bkt.clouddn.com', //上传到随机文件名
+        BucketDomain: 'lat-test'
     };
 
 

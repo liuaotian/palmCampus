@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title></title>
+      <link rel="stylesheet" type="text/css" href="css/aui.2.0.css" />
+  </head>
+  <style>
+    body{
+      font-family:STXihei;
+      background-color:#f5f5f5;
+    }
+    #optionUl{
+      position: fixed;
+      top:44px;
+      z-index: 100;
+    }
+    #optionLi{
+      text-align: center;
+      background-color: #03a9f4;
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      font-size: 15px;
+      border-bottom: 1px solid #70c3e9;
+    }
+     .view{
+      height: 30px;
+      background-color: #e9e9e9;
+      text-align: center;
+      border-bottom: 1px solid #fff;
+    }
+
+  </style>
+  <body>
+    <div id="life">
+      <header class="aui-bar aui-bar-nav">
+       <div class="aui-title">{{tittle}}</div>
+         <a class="aui-pull-right aui-btn aui-btn-outlined">
+            <span class="aui-iconfont aui-icon-menu" @click='moreLi'></span>
+         </a>
+       </header>
+       <div class="option">
+         <ul class="aui-list aui-form-list" id="optionUl" v-show="show">
+           <li  v-for="(item,index) in options" id="optionLi" @click="changeTittle(index)">
+             {{item.name}}
+           </li>
+         </ul>
+       </div>
+       <div v-show="schoolSide">
+         <ul class="aui-list aui-form-list" id="loginList">
+            <li class="aui-list-item" @click="showViews">
+                <div class="aui-list-item-inner">
+                    旅游景点
+                    <i class="aui-iconfont" v-bind:class="{'aui-icon-right': !showView,'aui-icon-down': showView}"></i>
+                </div>
+            </li>
+            <li class="view" v-for="(item,index) in views" v-show="showView" @click="linktoViews(index)">
+                    {{item.name}}
+            </li>
+            <!-- <li class="aui-list-item" @click="showShops">
+                 <div class="aui-list-item-inner">
+                     休闲场所
+                     <i class="aui-iconfont" v-bind:class="{'aui-icon-right': !showShop,'aui-icon-down':showShop}"></i>
+                 </div>
+             </li>
+             <li class="view" v-for="(item,index) in shops" v-show="showShop">
+                     {{item.name}}
+             </li> -->
+          </ul>
+       </div>
+       <div v-show="greenChannel">
+         <ul class="aui-list aui-form-list" id="loginList">
+            <li class="aui-list-item" @click="linkToschool(index)" v-for="(item,index) in links">
+                <div class="aui-list-item-inner">
+                    {{item.name}}
+                    <i class="aui-iconfont aui-icon-right"></i>
+                </div>
+            </li>
+          </ul>
+       </div>
+       <div v-show="market">
+         <ul class="aui-list aui-form-list" id="loginList">
+            <li class="aui-list-item" @click="junksMarket(index)" v-for="(item,index) in junks">
+                <div class="aui-list-item-inner">
+                    {{item.name}}
+                    <i class="aui-iconfont aui-icon-right"></i>
+                </div>
+            </li>
+          </ul>
+       </div>
+       <footer class="aui-bar aui-bar-tab" id="footer">
+          <div v-for="(item,index) in footicons" class="aui-bar-tab-item" :class="{'aui-active':item.show}" v-on:click="btnActive(index)">
+            <i class="aui-iconfont" :class="item.icon"></i>
+            <div class="aui-bar-tab-label">{{item.name}}</div>
+          </div>
+      </footer>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+
+  <script type="text/javascript">
+
+
+    new Vue({
+      el: '#life',
+      data () {
+        return {
+           tittle:"校园周边",
+           schoolSide:true,
+           greenChannel:false,
+           market:false,
+           options:
+           [
+             {name: '校园周边'},
+             {name: '消费查询'},
+             {name: '二手市场'},
+           ],
+           views:
+           [
+             {name: '连岛',link:'liandao.html'},
+             {name: '花果山',link:'huaguoshan.html'},
+             {name: '海上云台山',link:'HSyuntai.html'},
+           ],
+           shops:
+           [
+             {name: 'KTV',link:''},
+             {name: '商场',link:''},
+             {name: '超市',link:''},
+           ],
+           links:
+           [
+             {name: '电费余额查询',link:'powerRateInfo.html'},
+             {name: '校园卡余额查询',link:'campusCardInfo.html'},
+             {name: '水费余额查询',link:'waterRateInfo.html'},
+           ],
+           junks:
+           [
+             {name: '自行车',link:'bikeMarket.html'},
+             {name: '电器',link:'appliancesMarket.html'},
+             {name: '其它',link:'sundriesMarket.html'},
+             {name: '我要出售',link:'salePage.html'},
+             {name: '我出售的物品',link:'mySalePage.html'},
+           ],
+
+           footicons:
+           [
+             {name: '校园', icon: 'aui-icon-home',link:'school.html',show:0},
+             {name: '生活', icon: 'aui-icon-star',link:'lifePage.html',show:1},
+             {name: '学习', icon: 'aui-icon-map',link:'studyPage.html',show:0},
+             {name: '个人', icon: 'aui-icon-my',link:'personalInfo.html',show:0}
+           ],
+           show:false,
+           showView:false,
+           showShop:false
+        }
+      },
+      methods: {
+        moreLi(){
+          this.show=!this.show
+        },
+        changeTittle(shu){
+          this.tittle=this.options[shu].name;
+          this.show=!this.show;
+          if(shu==0){
+            this.schoolSide=true;
+            this.greenChannel=false;
+            this.market=false;
+          }
+          else if (shu==1) {
+            this.schoolSide=false;
+            this.greenChannel=true;
+            this.market=false;
+          }
+          else if (shu==2) {
+            this.schoolSide=false;
+            this.greenChannel=false;
+            this.market=true;
+          }
+
+        },
+        showViews(){
+          this.showView=!this.showView;
+        },
+        // showShops(){
+        //   this.showShop=!this.showShop;
+        // },
+        btnActive: function (shu) {
+          if(shu!=1){
+             location.replace(this.footicons[shu].link)
+          }
+        },
+        linkToschool(shu){
+            location.replace(this.links[shu].link)
+        },
+        junksMarket(shu){
+            location.replace(this.junks[shu].link)
+        },
+        linktoViews(shu){
+            location.replace(this.views[shu].link)
+        }
+      },
+      mounted(){
+          document.getElementById("optionLi").style.width=""+window.screen.width+"px";
+          // document.getElementById("schoolIframe").style.width=""+window.screen.width+"px";
+          // document.getElementById("schoolIframe").style.height=""+document.body.scrollHeight-95+"px";
+      }
+
+    })
+  </script>
+
+  </html>

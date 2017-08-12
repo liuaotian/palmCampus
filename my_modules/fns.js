@@ -182,124 +182,19 @@ function httpReqPrms(options, bodydata) {
 };
 
 
-/**
- * 函数，通过request请求获取uid
- * @param   {ctx} ctx请求的上下文
- * @returns {uid} 用户的id
- */
-_fns.getUidByCtx = function(ctx) {
+
+//获取cookie
+_fns.getCookies = function(ctx) {
     var co = $co(function * () {
-
-        //通过cookie从主服务器获取uid
-        var ukey = ctx.cookies.get('m_ukey');
-        if (!ukey || !_cfg.regx.ukey.test(ukey)) throw Error('您还没有注册和登陆');
-
-        var path = '/start/api/getUidByUkey';
-
-        var opt = {
-            hostname: 'm.xmgc360.com',
-            port: 80,
-            path: path,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-
-        var dat = {
-            ukey: ukey,
-        };
-
-        var res = yield _fns.httpReqPrms(opt, dat);
-        var msg = JSON.safeParse(res.body);
-        if (msg.code != 1) throw Error('获取用户信息失败，请稍后再试:' + msg.text);
-
-        //return msg.data.uid;
-        return ukey;
+        var hhitInfo = ctx.cookies.get('hhitInfo');
+        if (!hhitInfo)
+        {
+          hhitInfo=0;
+        }
+        return hhitInfo;
     });
     return co;
 };
-
-//获取用户id
-_fns.getIdByCtx = function(ctx) {
-    var co = $co(function * () {
-
-        //通过cookie从主服务器获取uid
-        var ukey = ctx.cookies.get('m_ukey');
-        if (!ukey || !_cfg.regx.ukey.test(ukey)) throw Error('您还没有注册和登陆');
-
-        var path = '/start/api/getUidByUkey';
-
-        var opt = {
-            hostname: 'm.xmgc360.com',
-            port: 80,
-            path: path,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-
-        var dat = {
-            ukey: ukey,
-        };
-
-        var res = yield _fns.httpReqPrms(opt, dat);
-        var msg = JSON.safeParse(res.body);
-        if (msg.code != 1) throw Error('获取用户信息失败，请稍后再试:' + msg.text);
-
-        //return msg.data.uid;
-        return msg;
-    });
-    return co;
-};
-
-//调用登陆接口方法
-_fns.getUidByLogin = function(ctx) {
-    var co = $co(function * () {
-
-        //通过cookie从主服务器获取uid
-        //var ukey = ctx.cookies.get('m_ukey');
-        //if (!ukey || !_cfg.regx.ukey.test(ukey)) throw Error('您还没有注册和登陆，不能创建App.');
-
-        var path = '/start/api/loginByPhone';
-
-
-        //拿到和验证数据
-
-        var phone = ctx.query.phone || ctx.request.body.phone;
-
-        var pw = ctx.query.pw || ctx.request.body.pw;
-
-
-        var opt = {
-            hostname: 'm.xmgc360.com',
-            port: 80,
-            path: path,
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        };
-
-        var password = __md5(pw);
-        var dat = {
-            phone: phone,
-            pw:password
-        };
-
-        var res = yield _fns.httpReqPrms(opt, dat);
-        var msg = JSON.safeParse(res.body);
-        if (msg.code != 1) throw Error('获取用户信息失败，请稍后再试:' + msg.text);
-        console.log(msg.data);
-        return msg.data;
-
-    });
-    return co;
-};
-
-
-
 
 /**
  * 讲一个数组转化为对象

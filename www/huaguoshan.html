@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title></title>
+      <link rel="stylesheet" type="text/css" href="css/aui.2.0.css" />
+  </head>
+  <style>
+  body{
+    font-family:STXihei;
+  }
+  #liandaoImg{
+    width: 100%;
+    margin-top: 10px;
+  }
+  .viewP{
+    font-size:20px;
+    margin-left:30px;
+    margin-top: 10px;
+    color:#000
+  }
+  </style>
+  <body>
+    <div id="huaguoshan">
+       <header class="aui-bar aui-bar-nav">
+          <a class="aui-pull-left aui-btn">
+         <span class="aui-iconfont aui-icon-left" @click='btnBack'></span>
+          </a>
+        <div class="aui-title">{{title}}</div>
+        </header>
+        <div>
+         <img src="images/huaguoshan.jpg" id="liandaoImg">
+         <p class="viewP">门票：100元&nbsp;旺季 </p>
+         <p class="viewP"><span style="margin-left:3em;">淡季(12月1日-次年2月28日)</span> </p>
+         <p class="viewP"><span style="margin-left:3em;">50元</span> </p>
+         <p class="viewP">公交：<span style="color:red">游2</span>  </p>
+         <p class="viewP"><span style="margin-left:3em;">新海高级中学站上车</span> </p>
+         <p class="viewP"><span style="margin-left:3em;">花果山景区站下车</span> </p>
+        </div>
+
+    </div>
+  </body>
+  <script type="text/javascript" src="js/vue.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#huaguoshan',
+      data () {
+        return {
+           title:"花果山",
+        }
+      },
+      methods: {
+         btnBack:function () {
+           location.replace('lifePage.html')
+         },
+     },
+      mounted(){
+      }
+    })
+
+  </script>
+
+  </html>
